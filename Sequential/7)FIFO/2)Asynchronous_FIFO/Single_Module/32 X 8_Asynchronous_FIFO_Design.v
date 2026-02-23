@@ -88,11 +88,10 @@ module Async_FIFO #(parameter W=8,D=32)(w_clk,r_clk,r_rst,w_rst,w_en,r_en,d_in,d
     empty<=temp_empty;
   end
       
-assign temp_full=(w_ptr_gray_next=={~r_ptr_syncgray[$clog2(D)],r_ptr_syncgray[$clog2(D)-1:0]});
+  assign temp_full=(w_ptr_gray_next=={~r_ptr_syncgray[$clog2(D):$clog2(D)-1],r_ptr_syncgray[$clog2(D)-2:0]});
 assign temp_empty=(r_ptr_gray_next==w_ptr_syncgray);
   
 endmodule
-  
   
   
   
