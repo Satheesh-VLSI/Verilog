@@ -10,16 +10,27 @@ module dual_port_RAM(data_in_A,data_in_B,addr_A,addr_B,mode_A,mode_B,clk,data_ou
   reg [7:0] memory [0:63];
   
   always @(posedge clk)begin
-    if (mode_A)
-      memory[addr_A]<=data_in_A;
-    else
-      data_out_A<=memory[addr_A];
-      end
     
-  always @(posedge clk)begin
-    if (mode_B)
-      memory[addr_B]<=data_in_B;
-    else
-      data_out_B<=memory[addr_B];
+    if (addr_A != addr_B) begin
+      //port A 
+      if (mode A)
+        memory[addr_A]<=data_in_A; //write A
+      else
+        data_out_A<=memory[addr_A];// read A
+      //port B
+      if (mode_B)
+        memory[addr_B]<=data_in_B; //write B
+      else
+        data_out_B<=memory[addr_B];// read B
+
       end
+    else begin //if both ports have same address , to avoid conflict I am giving priority to Port A
+      //port A 
+       if (mode A)
+        memory[addr_A]<=data_in_A; //write A
+      else
+        data_out_A<=memory[addr_A];// read A
+    end
+    
+ 
 endmodule
