@@ -30,7 +30,7 @@ module Async_fifo_TB#(parameter W=8,D=32);
   //Task for FIFO Write
   task write(input w_task,input r_task,input [5:0]count);
     
-    for(i=0;i<count;i+=1)begin
+    for(i=0;i<=count;i+=1)begin
       @(negedge w_clk);
          w_en = w_task;
          r_en = r_task;
@@ -46,7 +46,7 @@ module Async_fifo_TB#(parameter W=8,D=32);
     //Task for FIFO Read
   task read(input w_task,input r_task,input [5:0]count);
     
-      for(j=0;j<count;j+=1)begin
+    for(j=0;j<=count;j+=1)begin
         @(negedge r_clk);
         w_en = w_task;
         r_en = r_task;
