@@ -1,4 +1,10 @@
-//top module
+//top module 
+
+`include "Synchronizer.v"
+`include "Write_handler.v"
+`include "Read_Handler.v"
+`include "Memory.v"
+
 module async_fifo #(parameter W=8,D=32) (w_clk,r_clk,r_rst,w_rst,w_en,r_en,d_in,d_out,full,empty);
 
   input w_clk,r_clk,r_rst,w_rst,w_en,r_en;
