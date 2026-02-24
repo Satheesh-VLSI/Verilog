@@ -13,7 +13,7 @@ module dual_port_RAM(data_in_A,data_in_B,addr_A,addr_B,mode_A,mode_B,clk,data_ou
     
     if (addr_A != addr_B) begin
       //port A 
-      if (mode A)
+      if (mode_A)
         memory[addr_A]<=data_in_A; //write A
       else
         data_out_A<=memory[addr_A];// read A
@@ -26,11 +26,11 @@ module dual_port_RAM(data_in_A,data_in_B,addr_A,addr_B,mode_A,mode_B,clk,data_ou
       end
     else begin //if both ports have same address , to avoid conflict I am giving priority to Port A
       //port A 
-       if (mode A)
+      if (mode_A)
         memory[addr_A]<=data_in_A; //write A
       else
         data_out_A<=memory[addr_A];// read A
     end
-    
+  end
  
 endmodule
