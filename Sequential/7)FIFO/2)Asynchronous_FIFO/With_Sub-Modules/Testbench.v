@@ -41,6 +41,8 @@ module Async_fifo_TB#(parameter W=8,D=32);
       else
                 $display("%t  ***Cant write***FIFO Is FULL***",$time);
        end
+    @(negedge w_clk);
+    w_en=0;
   endtask
   
     //Task for FIFO Read
@@ -55,6 +57,8 @@ module Async_fifo_TB#(parameter W=8,D=32);
       else
         $display("%t  ***Cant Read***FIFO Is EMPTY***",$time);
      end
+    @(negedge r_clk);
+    r_en=0;
    
   endtask
 
