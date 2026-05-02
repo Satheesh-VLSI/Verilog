@@ -8,7 +8,7 @@ module Sync_FIFO #(parameter Width=8,Depth=16)(clk,rst,full,empty,data_in,data_o
   reg [$clog2(Depth)-1:0] write_ptr,read_ptr;
   reg [Width-1:0] fifo [0:Depth-1];
   
-  assign full=((write_ptr+1)==read_ptr);
+  assign full=((write_ptr+1'b1)==read_ptr);
   assign empty=(write_ptr==read_ptr);
   
   
